@@ -20,6 +20,7 @@ namespace XNode {
         public virtual Node AddNode(Type type) {
             Node.graphHotfix = this;
             Node node = ScriptableObject.CreateInstance(type) as Node;
+            node.name = node.GetDefaultNodeName();
             node.graph = this;
             nodes.Add(node);
             return node;

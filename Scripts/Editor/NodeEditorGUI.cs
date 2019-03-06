@@ -14,6 +14,10 @@ namespace XNodeEditor {
         /// <summary> Executed after all other window GUI. Useful if Zoom is ruining your day. Automatically resets after being run.</summary>
         public event Action onLateGUI;
 
+
+        private Color _selConnColor = new Color(1.0f, 1.0f, 1.0f, 0.75f);
+        private Vector2 _selConnOffset = new Vector2(0.0f, 1.75f);
+
         private void OnGUI() {
             Event e = Event.current;
             Matrix4x4 m = GUI.matrix;
@@ -206,7 +210,16 @@ namespace XNodeEditor {
                         }
                         to = toRect.center;
 
-                        DrawConnection(from, to, connectionColor);
+                        if (Selection.Contains(input.node) || Selection.Contains(output.node))
+                        {
+                            DrawConnection(from + _selConnOffset, to + _selConnOffset, _selConnColor);
+                            DrawConnection(from - _selConnOffset, to - _selConnOffset, _selConnColor);
+                            DrawConnection(from, to, connectionColor);
+                        
+                        }
+
+                        else
+                            DrawConnection(from, to, connectionColor);
 
                         // Loop through reroute points again and draw the points
                         for (int i = 0; i < reroutePoints.Count; i++) {

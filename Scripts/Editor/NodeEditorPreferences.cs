@@ -161,8 +161,9 @@ namespace XNodeEditor {
                     typeColors[type] = col;
                     if (settings.typeColors.ContainsKey(typeColorKey)) settings.typeColors[typeColorKey] = col;
                     else settings.typeColors.Add(typeColorKey, col);
-                    SavePrefs(typeColorKey, settings);
+                    SavePrefs(lastKey, settings);
                     NodeEditorWindow.RepaintAll();
+                    break;
                 }
             }
         }

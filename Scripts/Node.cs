@@ -34,6 +34,8 @@ namespace XNode {
             Always
         }
 
+        public virtual string GetDefaultNodeName() { return GetType().Name; }
+
         public enum ConnectionType {
             /// <summary> Allow multiple connections</summary>
             Multiple,
