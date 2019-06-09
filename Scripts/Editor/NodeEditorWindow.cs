@@ -54,6 +54,8 @@ namespace XNodeEditor {
                         _portConnectionPoints.Add(nodePort, _rects[i]);
                 }
             }
+
+            NodeGraphInspector_EditorWindow.Decorate(this);
         }
 
         public Dictionary<XNode.Node, Vector2> nodeSizes { get { return _nodeSizes; } }

@@ -15,7 +15,7 @@ namespace XNodeEditor {
         public event Action onLateGUI;
 
 
-        private Color _selConnColor = new Color(1.0f, 1.0f, 1.0f, 0.75f);
+        private Color _selConnColor = new Color(1.0f, 1.0f, 1.0f, 0.9f);
         private Vector2 _selConnOffset = new Vector2(0.0f, 1.75f);
 
         private void OnGUI() {
@@ -214,7 +214,10 @@ namespace XNodeEditor {
                         {
                             DrawConnection(from + _selConnOffset, to + _selConnOffset, _selConnColor);
                             DrawConnection(from - _selConnOffset, to - _selConnOffset, _selConnColor);
-                            DrawConnection(from, to, connectionColor);
+
+                            var selectedColor = connectionColor;
+                            selectedColor.a *= 0.75f;
+                            DrawConnection(from, to, selectedColor);
                         
                         }
 
