@@ -36,7 +36,7 @@ public class NodeGraphInspector_EditorWindow : EditorWindow
 
         if(nodes.Length == 1)
         {
-            var node = NodeEditor.GetEditor(nodes[0]);
+            var node = NodeEditor.GetEditor(nodes[0], _nodeEditorWindow);
 
             node.OnHeaderGUI();
             node.OnBodyGUI();
